@@ -1,0 +1,13 @@
+version: '3.0'
+
+services:
+    keycloak:
+        image: quay.io/keycloak/keycloak:13.0.0
+        environment: 
+            KEYCLOAK_USER: admin
+            KEYCLOAK_PASSWORD: admin
+            KEYCLOAK_IMPORT: /opt/jboss/keycloak/imports/baeldung-realm.json -Dkeycloak.profile.feature.upload_scripts=enabled          
+        ports:
+            - 8083:8080
+        volumes:
+            - ./imports:/opt/jboss/keycloak/imports
